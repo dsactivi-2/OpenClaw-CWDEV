@@ -75,6 +75,10 @@
           - "extensions/qa-lab/**"
           - "docs/concepts/qa-e2e-automation.md"
           - "docs/channels/qa-channel.md"
+"extensions: clawworld-teams":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "extensions/clawworld-teams/**"
 "channel: signal":
   - changed-files:
       - any-glob-to-any-file:

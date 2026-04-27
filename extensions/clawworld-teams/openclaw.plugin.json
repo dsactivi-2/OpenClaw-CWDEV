@@ -1,0 +1,45 @@
+{
+  "id": "clawworld-teams",
+  "name": "ClawWorld Teams",
+  "description": "ClawWorld dashboard and Teams integration bridge.",
+  "enabledByDefault": true,
+  "uiHints": {
+    "dashboardPath": {
+      "label": "Dashboard path",
+      "placeholder": "/clawworld"
+    },
+    "dashboardTitle": {
+      "label": "Dashboard title",
+      "placeholder": "ClawWorld Control"
+    },
+    "apiBaseUrl": {
+      "label": "API base URL",
+      "placeholder": "https://api.example.com"
+    },
+    "brandLabel": {
+      "label": "Brand label",
+      "placeholder": "ClawWorld Teams"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "dashboardPath": {
+        "type": "string",
+        "minLength": 1
+      },
+      "dashboardTitle": {
+        "type": "string",
+        "minLength": 1
+      },
+      "apiBaseUrl": {
+        "type": "string"
+      },
+      "brandLabel": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

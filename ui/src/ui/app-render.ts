@@ -751,6 +751,7 @@ export function renderApp(state: AppViewState) {
     })();
   };
   const basePath = normalizeBasePath(state.basePath ?? "");
+  const clawworldHref = basePath ? `${basePath}/clawworld` : "/clawworld";
   const resolveSelectedAgentId = () =>
     state.agentsSelectedId ??
     state.agentsList?.defaultId ??
@@ -1334,6 +1335,10 @@ export function renderApp(state: AppViewState) {
             </div>
             <div class="sidebar-shell__footer">
               <div class="sidebar-utility-group">
+                <a class="nav-item sidebar-utility-link" href="${clawworldHref}" title="ClawWorld">
+                  <span class="nav-item__icon" aria-hidden="true">${icons.globe}</span>
+                  ${!navCollapsed ? html`<span class="nav-item__text">ClawWorld</span>` : nothing}
+                </a>
                 <a
                   class="nav-item nav-item--external sidebar-utility-link"
                   href="https://docs.openclaw.ai"
@@ -2301,6 +2306,44 @@ export function renderApp(state: AppViewState) {
             })
           : nothing}
         ${renderConfigTabForActiveTab()}
+        ${state.tab === "clawworld"
+          ? html`
+              <section class="content-section">
+                <div class="card">
+                  <div class="card__body" style="display: grid; gap: 16px;">
+                    <div>
+                      <div class="page-title">${titleForTab(state.tab)}</div>
+                      <div class="page-sub">${subtitleForTab(state.tab)}</div>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                      <a class="btn btn--primary" href="${clawworldHref}" target="_self">
+                        Open ClawWorld dashboard
+                      </a>
+                      <a
+                        class="btn btn--secondary"
+                        href="${clawworldHref}"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open in new tab
+                      </a>
+                    </div>
+                    <iframe
+                      title="ClawWorld dashboard"
+                      src="${clawworldHref}"
+                      style="
+                        width: 100%;
+                        min-height: 76vh;
+                        border: 1px solid var(--border-color, rgba(148, 163, 184, 0.2));
+                        border-radius: 16px;
+                        background: var(--panel-bg, #0b1020);
+                      "
+                    ></iframe>
+                  </div>
+                </div>
+              </section>
+            `
+          : nothing}
         ${state.tab === "debug"
           ? lazyRender(lazyDebug, (m) =>
               m.renderDebug({
