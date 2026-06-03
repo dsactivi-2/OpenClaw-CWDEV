@@ -251,7 +251,7 @@ jobs:
           esac
 
       - name: Checkout workflow repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
         with:
           repository: ${{ env.OPENCLAW_REPOSITORY }}
           ref: ${{ steps.workflow_ref.outputs.value }}
@@ -260,7 +260,7 @@ jobs:
           persist-credentials: false
 
       - name: Checkout public source ref
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
         with:
           repository: ${{ env.OPENCLAW_REPOSITORY }}
           ref: ${{ inputs.ref }}
@@ -389,7 +389,7 @@ jobs:
     timeout-minutes: 120
     steps:
       - name: Checkout workflow repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
         with:
           repository: ${{ env.OPENCLAW_REPOSITORY }}
           ref: ${{ needs.prepare.outputs.workflow_ref }}
