@@ -365,12 +365,12 @@ jobs:
 
       - name: Setup Python
         id: setup-python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: "3.12"
 
       - name: Restore pre-commit cache
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: .cache/pre-commit-security-fast
           key: pre-commit-security-fast-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('.pre-commit-config.yaml') }}
@@ -541,7 +541,7 @@ jobs:
         run: pnpm ui:build
 
       - name: Cache dist build
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: dist/
           key: ${{ runner.os }}-dist-build-${{ github.sha }}
@@ -1234,7 +1234,7 @@ jobs:
 
       - name: Restore dist cache
         id: dist-cache
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: dist/
           key: ${{ runner.os }}-dist-build-${{ github.sha }}
@@ -1618,7 +1618,7 @@ jobs:
       - name: Cache extension package boundary artifacts
         id: extension-package-boundary-cache
         if: matrix.group == 'extension-package-boundary-compile'
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: |
             dist/plugin-sdk
@@ -1820,7 +1820,7 @@ jobs:
       - name: Restore dist cache
         id: build-smoke-dist-cache
         if: github.event_name == 'push'
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: dist/
           key: ${{ runner.os }}-dist-build-${{ github.sha }}
@@ -1931,7 +1931,7 @@ jobs:
           submodules: false
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: "3.12"
 
@@ -2215,7 +2215,7 @@ jobs:
           echo "key=$toolchain_key" >> "$GITHUB_OUTPUT"
 
       - name: Cache SwiftPM
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: ~/Library/Caches/org.swift.swiftpm
           key: ${{ runner.os }}-swiftpm-${{ hashFiles('apps/macos/Package.resolved') }}
@@ -2224,7 +2224,7 @@ jobs:
 
       - name: Cache Swift build directory
         id: swift-build-cache
-        uses: actions/cache@v5
+        uses: actions/cache@v5.0.5
         with:
           path: apps/macos/.build
           key: ${{ runner.os }}-swift-build-v2-${{ steps.swift-toolchain.outputs.key }}-${{ hashFiles('apps/macos/Package.swift', 'apps/macos/Package.resolved', 'apps/macos/Sources/**', 'apps/macos/Tests/**', 'apps/shared/OpenClawKit/Package.swift', 'apps/shared/OpenClawKit/Sources/**', 'Swabble/Package.swift', 'Swabble/Sources/**') }}
